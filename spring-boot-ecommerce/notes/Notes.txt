@@ -10,3 +10,12 @@ Answer :
 
 #####################################################################################################################
 
+Ques2 : orderItems.add(item);
+            item.setOrder(this);    what is use of passing this as a argument 
+
+Ans : The keyword this may be used only in the body of an instance method,
+ instance initializer or constructor, or in the initializer of an instance variable of a class.
+ If it appears anywhere else, a compile-time error occurs. When used as a primary expression,
+ the keyword this denotes a value that is a reference to the object for which the instance method was invoked (§15.12), 
+or to the object being constructed. The type of this is the class C within which the keyword this occurs.
+ At run time, the class of the actual object referred to may be the class C or any subclass of C.
