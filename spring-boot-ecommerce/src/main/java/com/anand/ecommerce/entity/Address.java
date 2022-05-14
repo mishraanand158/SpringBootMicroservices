@@ -5,10 +5,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+
 @Entity
 @Table(name="address")
+@Getter
+@Setter
 public class Address {
 
     @Id
@@ -24,6 +25,9 @@ public class Address {
 
     @Column(name="state")
     private String state;
+
+    @Column(name="country")
+    private String country;
 
     @Column(name="zip_code")
     private String zipCode;

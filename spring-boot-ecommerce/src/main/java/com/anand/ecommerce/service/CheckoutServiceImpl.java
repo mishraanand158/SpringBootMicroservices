@@ -6,6 +6,7 @@ import com.anand.ecommerce.dto.PurchaseResponse;
 import com.anand.ecommerce.entity.Customer;
 import com.anand.ecommerce.entity.Order;
 import com.anand.ecommerce.entity.OrderItem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import java.util.UUID;
 public class CheckoutServiceImpl implements CheckoutService{
 
     private CustomerRepository customerRepository;
+
 
     public CheckoutServiceImpl(CustomerRepository customerRepository)
     {
@@ -48,9 +50,11 @@ public class CheckoutServiceImpl implements CheckoutService{
         customer.add(order);
 
         // Save to Database
+        System.out.println("/n################SAve##########################/n");
         customerRepository.save(customer);
 
         // return the responses
+        System.out.println("/n#################Responces#####################/n");
 
         return  new PurchaseResponse(orderTrackingNumber);
 
@@ -60,6 +64,7 @@ public class CheckoutServiceImpl implements CheckoutService{
 
         // generate unique UUID number (UUID version -4 )
         //  https://en.wikipedia.org/wiki/Universally_unique_identifier
+        System.out.println("/n##########################################/n");
 
         return UUID.randomUUID().toString();
     }
