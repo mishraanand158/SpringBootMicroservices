@@ -8,22 +8,22 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
-
 @RepositoryRestResource
-public interface OrderRepository extends JpaRepository<Order,Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
-   Page<Order> findByCustomerEmail(@Param("email") String email, Pageable pageable);
-   /**
-    *  behind the scene code is working like this
-    *  Select * from orders
-    *  Left outer Join customer
-    *  On orders.customer_id = customer_id
-    *  Where customer email = :email;
-    */
+    Page<Order> findByCustomerEmailOrderByDateCreatedDesc(@Param("email") String email, Pageable pageable);
+    /**
+     *  behind the scene code is working like this
+     *  Select * from orders
+     *  Left outer Join customer
+     *  On orders.customer_id = customer_id
+     *  Where customer email = :email;
+     *  ordered by orders.date_created DESC
+     */
 
-/**
- * http://localhost:8080/api/porder/search/findByCustomerEmail?email=anand@email.com
- */
+    /**
+     * http://localhost:8080/api/porder/search/findByCustomerEmail?email=anand@email.com
+     */
 
 
 }

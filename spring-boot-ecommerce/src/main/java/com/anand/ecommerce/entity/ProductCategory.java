@@ -8,7 +8,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name="product_category")
+@Table(name = "product_category")
 @Getter
 @Setter
 public class ProductCategory {

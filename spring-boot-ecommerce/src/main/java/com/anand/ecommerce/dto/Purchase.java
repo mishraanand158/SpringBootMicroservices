@@ -6,8 +6,6 @@ import com.anand.ecommerce.entity.Order;
 import com.anand.ecommerce.entity.OrderItem;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -17,6 +15,6 @@ public class Purchase {
     private Address shippingAddress;
     private Address billingAddress;
     private Order order;
-    private Set<OrderItem> orderItems ;
+    private Set<OrderItem> orderItems;
 
 }

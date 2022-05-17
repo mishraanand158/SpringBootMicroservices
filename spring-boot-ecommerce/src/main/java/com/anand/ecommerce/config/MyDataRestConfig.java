@@ -1,8 +1,6 @@
 package com.anand.ecommerce.config;
 
 import com.anand.ecommerce.entity.*;
-
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -21,32 +19,34 @@ import java.util.Set;
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 
     @Value("${allowed.origins")
-    private String[] theAllowedOrigins ;
+    private String[] theAllowedOrigins;
 
     private EntityManager entityManager;
 
     @Autowired
     public MyDataRestConfig(EntityManager theEntityManager) {
-        entityManager=theEntityManager;
+
+        entityManager = theEntityManager;
     }
+
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 
         HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST,
-                                                HttpMethod.DELETE,HttpMethod.PATCH};
+                HttpMethod.DELETE, HttpMethod.PATCH};
 
         // disable http method for Product class Methods are put , post , delete
-        disableHttpMethods(Product.class,config,theUnsupportedActions);
-        disableHttpMethods(ProductCategory.class,config,theUnsupportedActions);
-        disableHttpMethods(Country.class,config,theUnsupportedActions);
-        disableHttpMethods(State.class,config,theUnsupportedActions);
-        disableHttpMethods(Order.class,config,theUnsupportedActions);
+        disableHttpMethods(Product.class, config, theUnsupportedActions);
+        disableHttpMethods(ProductCategory.class, config, theUnsupportedActions);
+        disableHttpMethods(Country.class, config, theUnsupportedActions);
+        disableHttpMethods(State.class, config, theUnsupportedActions);
+        disableHttpMethods(Order.class, config, theUnsupportedActions);
 
         // call an internal helper method
         exposeId(config);
 
         // configure cors mapping
-       cors.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrigins);
+        cors.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrigins);
 
     }
 

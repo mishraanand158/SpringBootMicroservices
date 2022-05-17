@@ -1,7 +1,6 @@
 package com.anand.ecommerce.entity;
 
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,33 +13,33 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 @Getter
 @Setter
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name="order_tracking_number")
+    @Column(name = "order_tracking_number")
     private String orderTrackingNumber;
 
-    @Column(name="total_quantity")
+    @Column(name = "total_quantity")
     private int totalQuantity;
 
-    @Column(name="total_price")
+    @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    @Column(name="status")
+    @Column(name = "status")
     private String status;
 
-    @Column(name="date_created")
+    @Column(name = "date_created")
     @CreationTimestamp
     private Date dateCreated;
 
-    @Column(name="last_updated")
+    @Column(name = "last_updated")
     @UpdateTimestamp
     private Date lastUpdated;
 
