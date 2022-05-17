@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer,Long> {
+
+    //Select * from Customer c WHERE c.email = theEmail;
+
+    Customer findByEmail(String theEmail);
 }
